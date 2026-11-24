@@ -103,7 +103,7 @@ export function ProductView({ product }: { product: Product }) {
             ref={heroRef}
             className={`relative ${hiding ? "opacity-0" : "opacity-100"}`}
           >
-            <p className="mb-4 font-serif text-3xl text-plum lg:hidden">{editorialTitle(product.name)}</p>
+            <p className="mb-4 font-serif text-3xl text-plum lg:hidden">{editorialTitle(product)}</p>
             <div className="relative aspect-[4/5] overflow-hidden lg:aspect-auto lg:min-h-[72vh]">
               <ProductVisual
                 src={current}
@@ -151,7 +151,7 @@ export function ProductView({ product }: { product: Product }) {
             {product.brand}
           </p>
           <h1 className="mt-3 hidden font-serif text-4xl leading-[0.95] lg:block">
-            {editorialTitle(product.name)}
+            {editorialTitle(product)}
           </h1>
           <p className="mt-3 hidden font-serif italic text-plum/50 lg:block">{product.type}</p>
           <p className="mt-6 font-serif text-2xl">{formatNaira(productPrice(product))}</p>

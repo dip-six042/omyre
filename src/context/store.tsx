@@ -9,9 +9,10 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { placeOrder as submitOrder, type PlaceOrderInput, type PlaceOrderResult } from "@/app/actions/orders";
 import { products } from "@/lib/products";
 import type { CartItem, Order, Product } from "@/lib/types";
-import { generateOrderId, productPrice } from "@/lib/utils";
+import { productPrice } from "@/lib/utils";
 
 const CART_KEY = "omyre-cart";
 const WISH_KEY = "omyre-wishlist";
@@ -35,7 +36,7 @@ type StoreContextValue = {
   clearCart: () => void;
   toggleWishlist: (slug: string) => void;
   isWishlisted: (slug: string) => boolean;
-  placeOrder: (order: Omit<Order, "id" | "createdAt" | "status" | "items" | "subtotal">) => Order;
+  placeOrder: (order: Omit<PlaceOrderInput, "items">) => Promise<PlaceOrderResult>;
   subscribe: (email: string) => void;
 };
 
@@ -152,28 +153,17 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   );
 
   const placeOrder: StoreContextValue["placeOrder"] = useCallback(
-    (input) => {
-      const items = cartProducts.map(({ item, product }) => ({
-        slug: item.slug,
-        quantity: item.quantity,
-        name: product.name,
-        price: productPrice(product),
-        image: product.images[0],
-      }));
-      const order: Order = {
-        ...input,
-        id: generateOrderId(),
-        createdAt: new Date().toISOString(),
-        status: "Payment Pending",
-        items,
-        subtotal: cartSubtotal,
-      };
-      setOrders((prev) => [order, ...prev]);
-      setCart([]);
-      setCartOpen(false);
-      return order;
+    async (input) => {
+      const result = await submitOrder({ ...input, items: cart });
+      if (result.ok) {
+        // Keep a copy on this device for the confirmation and account pages.
+        setOrders((prev) => [result.order, ...prev]);
+        setCart([]);
+        setCartOpen(false);
+      }
+      return result;
     },
-    [cartProducts, cartSubtotal],
+    [cart],
   );
 
   const subscribe = useCallback((email: string) => {

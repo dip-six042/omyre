@@ -13,6 +13,29 @@ const IMG = {
   paris: "/products/paris-cafe.jpg",
   tea: "/products/white-tea-sage.jpg",
   trio: "/products/candles-trio-velvet.jpg",
+  mensDeoBourbon: "/products/mens-deodorant-bourbon.jpg",
+  mensDeoGraphite: "/products/mens-deodorant-graphite.jpg",
+  mensDeoTeakwood: "/products/mens-deodorant-mahogany-teakwood.jpg",
+  mensDeoCollection: "/products/mens-deodorant-collection.jpg",
+  womensDeo: "/products/womens-deodorant-gingham.jpg",
+  mistVivaVanilla: "/products/mist-viva-vanilla.jpg",
+  mistIfYouMusk: "/products/mist-if-you-musk.jpg",
+  mist3: "/products/mist-3.jpg",
+  mist4: "/products/mist-4.jpg",
+  mist5: "/products/mist-5.jpg",
+  mist6: "/products/mist-6.jpg",
+  mistAlwaysFleur: "/products/mist-always-fleur.jpg",
+  butterfly: "/products/butterfly-collection.jpg",
+  butterAtw: "/products/body-butter-a-thousand-wishes.jpg",
+  butterLavender: "/products/body-butter-lavender-vanilla.jpg",
+  creamAtw: "/products/body-cream-a-thousand-wishes.jpg",
+  creamButterfly: "/products/body-cream-butterfly.jpg",
+  creamVanillaCafe: "/products/body-cream-vanilla-cafe.jpg",
+  creamWildSand: "/products/body-cream-wild-sand.jpg",
+  washCherryBlossom: "/products/body-wash-japanese-cherry-blossom.jpg",
+  giftAtw: "/products/gift-set-a-thousand-wishes.jpg",
+  giftCollection: "/products/gift-set-collection.jpg",
+  mensSet: "/products/mens-body-care-set.jpg",
 };
 
 type Draft = {
@@ -204,7 +227,7 @@ const drafts: Draft[] = [
     fragranceName: "Assorted",
     fragranceFamily: "Warm",
     size: "Table stand",
-    images: [IMG.velvet, IMG.campaign, IMG.wood],
+    images: ["/products/ai/candle-stand.jpg"],
     description:
       "A sculptural stand for your three-wick. Elevate the candle — and the corner it lives in.",
   },
@@ -221,7 +244,7 @@ const drafts: Draft[] = [
     size: "42.5 g",
     featured: true,
     bestSeller: true,
-    images: [IMG.sprays, IMG.wood, IMG.campaign],
+    images: [IMG.sprays],
     description:
       "Your weekend mood, bottled. Sweet, fresh, warm or a little luxurious — a burst of fragrance for linens, corners and the air between.",
   },
@@ -235,7 +258,7 @@ const drafts: Draft[] = [
     price: 9000,
     fragranceFamily: "Fresh",
     size: "24 ml",
-    images: [IMG.sprays, IMG.campaign, IMG.wood],
+    images: ["/products/ai/wall-fragrance-refill.jpg"],
     description:
       "Keep the plug-in going. A wallflower refill so the house still smells like you when you walk back in.",
   },
@@ -249,7 +272,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Warm",
     size: "Plug-in unit",
-    images: [IMG.sprays, IMG.wood, IMG.velvet],
+    images: ["/products/ai/black-wall-plug.jpg"],
     description:
       "A black wall plug for continuous home fragrance. Quiet luxury that works while you do.",
   },
@@ -264,7 +287,7 @@ const drafts: Draft[] = [
     fragranceFamily: "Floral",
     size: "Decorative plug-in",
     newArrival: true,
-    images: [IMG.campaign, IMG.sprays, IMG.velvet],
+    images: ["/products/ai/design-wall-plug-in.jpg"],
     description:
       "A design-led wall plug-in — fragrance that looks as considered as it smells.",
   },
@@ -278,7 +301,7 @@ const drafts: Draft[] = [
     price: 8000,
     fragranceFamily: "Fresh",
     size: "Refill",
-    images: [IMG.sprays, IMG.campaign],
+    images: ["/products/car-plug-refill.jpg"],
     description:
       "A refill for your car plug. The commute, but make it fragrant.",
   },
@@ -292,7 +315,7 @@ const drafts: Draft[] = [
     price: 22000,
     fragranceFamily: "Floral",
     size: "Car plug",
-    images: [IMG.sprays, IMG.campaignAlt],
+    images: ["/products/shimmery-car-plug.jpg"],
     description:
       "A shimmery car plug — a little sparkle for the dashboard, and a scent that travels with you.",
   },
@@ -307,7 +330,7 @@ const drafts: Draft[] = [
     price: 18000,
     fragranceFamily: "Fresh",
     size: "Vent clip",
-    images: [IMG.sprays, IMG.wood],
+    images: ["/products/plain-car-clips.jpg"],
     description:
       "Simple vent clips for everyday fragrance on the road.",
   },
@@ -322,7 +345,7 @@ const drafts: Draft[] = [
     price: 22000,
     fragranceFamily: "Fresh",
     size: "Vent clip",
-    images: [IMG.sprays, IMG.campaign],
+    images: ["/products/leaf-car-clips.jpg"],
     description:
       "Leaf-shaped car clips — a small botanical detail for the drive.",
   },
@@ -337,7 +360,7 @@ const drafts: Draft[] = [
     price: 25000,
     fragranceFamily: "Woody",
     size: "Vent clip",
-    images: [IMG.wood, IMG.sprays],
+    images: ["/products/ai/leather-car-clips.jpg"],
     description:
       "Leather car clips with a quieter, more tailored feel.",
   },
@@ -352,7 +375,7 @@ const drafts: Draft[] = [
     price: 25000,
     fragranceFamily: "Floral",
     size: "Vent clip",
-    images: [IMG.campaign, IMG.sprays],
+    images: ["/products/bow-car-clips.jpg"],
     description:
       "Bow car clips — a little romance for the vent.",
   },
@@ -367,7 +390,7 @@ const drafts: Draft[] = [
     price: 25000,
     fragranceFamily: "Floral",
     size: "Vent clip",
-    images: [IMG.campaignAlt, IMG.sprays],
+    images: ["/products/rose-car-clips.jpg"],
     description:
       "Rose car clips for a softer, floral finish on the road.",
   },
@@ -383,7 +406,7 @@ const drafts: Draft[] = [
     fragranceFamily: "Warm",
     size: "Vent clip",
     newArrival: true,
-    images: [IMG.velvet, IMG.sprays, IMG.campaign],
+    images: ["/products/metallic-car-clips.jpg"],
     description:
       "Metallic car clips — the most luxe way to scent the drive.",
   },
@@ -399,7 +422,7 @@ const drafts: Draft[] = [
     size: "226 g",
     featured: true,
     bestSeller: true,
-    images: [IMG.campaign, IMG.campaignAlt, IMG.velvet],
+    images: [IMG.creamAtw, IMG.creamButterfly, IMG.creamVanillaCafe, IMG.creamWildSand],
     description:
       "A rich body cream for after the shower. Soft skin, a lingering scent, and a ritual that feels like yours.",
   },
@@ -414,7 +437,7 @@ const drafts: Draft[] = [
     fragranceFamily: "Floral",
     size: "295 ml",
     bestSeller: true,
-    images: [IMG.campaignAlt, IMG.campaign, IMG.sprays],
+    images: ["/products/ai/womens-body-wash.jpg"],
     description:
       "A daily body wash that turns the shower into the first nice thing that happens.",
   },
@@ -429,7 +452,7 @@ const drafts: Draft[] = [
     fragranceFamily: "Gourmand",
     size: "185 g",
     bestSeller: true,
-    images: [IMG.campaign, IMG.wood, IMG.velvet],
+    images: [IMG.butterAtw, IMG.butterLavender],
     description:
       "A whipped body butter for skin that wants more. Slow, rich, and made for evening.",
   },
@@ -443,7 +466,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Fresh",
     size: "226 g",
-    images: [IMG.wood, IMG.campaign, IMG.velvet],
+    images: ["/products/ai/body-scrub.jpg"],
     description:
       "A body scrub to polish the day off. Smooth skin, a little fragrance, a cleaner start.",
   },
@@ -458,7 +481,7 @@ const drafts: Draft[] = [
     fragranceName: "Cocoa",
     fragranceFamily: "Gourmand",
     size: "226 g",
-    images: [IMG.wood, IMG.campaignAlt, IMG.velvet],
+    images: ["/products/ai/cocoa-body-cream.jpg"],
     notes: {
       top: "Cocoa butter",
       heart: "Warm vanilla",
@@ -477,7 +500,7 @@ const drafts: Draft[] = [
     price: 11500,
     fragranceFamily: "Fresh",
     size: "236 ml",
-    images: [IMG.campaign, IMG.sprays],
+    images: ["/products/ai/hand-wash.jpg"],
     description:
       "A beautiful hand wash for the sink you actually use. Small ritual, every time.",
   },
@@ -491,7 +514,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Warm",
     size: "118 ml",
-    images: [IMG.campaignAlt, IMG.wood],
+    images: ["/products/ai/massage-oil.jpg"],
     description:
       "A silky massage oil for slower evenings. Skin, scent, and a little time.",
   },
@@ -505,7 +528,7 @@ const drafts: Draft[] = [
     price: 9000,
     fragranceFamily: "Fresh",
     size: "Bar",
-    images: [IMG.campaign, IMG.velvet],
+    images: ["/products/ai/cleansing-bar.jpg"],
     description:
       "A cleansing bar that still feels like a treat. Simple, fragrant, and easy to love.",
   },
@@ -519,7 +542,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Floral",
     size: "73 g",
-    images: [IMG.campaign, IMG.sprays],
+    images: [IMG.womensDeo],
     description:
       "Everyday deodorant with the same scent story as the rest of your ritual.",
   },
@@ -533,7 +556,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Fresh",
     size: "Tube",
-    images: [IMG.campaignAlt, IMG.sprays],
+    images: [IMG.washCherryBlossom],
     description:
       "Body wash in a tube — travel-friendly, shower-ready, still a little luxurious.",
   },
@@ -547,7 +570,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Fresh",
     size: "Pair",
-    images: [IMG.sprays, IMG.campaign],
+    images: ["/products/ai/shampoo-and-conditioner.jpg"],
     description:
       "Shampoo and conditioner as a pair. Soft hair, a familiar scent, a finished ritual.",
   },
@@ -562,7 +585,7 @@ const drafts: Draft[] = [
     fragranceFamily: "Floral",
     size: "Mini",
     newArrival: true,
-    images: [IMG.campaign, IMG.sprays],
+    images: ["/products/ai/mini-travel-size.jpg"],
     description:
       "A mini for the bag, the weekend, the guest bath. The ritual, scaled down.",
   },
@@ -576,7 +599,7 @@ const drafts: Draft[] = [
     price: 4000,
     fragranceFamily: "Fresh",
     size: "29 ml",
-    images: [IMG.sprays, IMG.campaign],
+    images: ["/products/ai/antibacterial-hand-sanitizer.jpg"],
     description:
       "A pocket sanitizer that still smells like something you'd choose.",
   },
@@ -590,7 +613,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Woody",
     size: "73 g",
-    images: [IMG.wood, IMG.sprays],
+    images: [IMG.mensDeoBourbon, IMG.mensDeoGraphite, IMG.mensDeoTeakwood, IMG.mensDeoCollection],
     description:
       "Men's deodorant from the same authentic line — clean, considered, everyday.",
   },
@@ -604,7 +627,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Woody",
     size: "295 ml",
-    images: [IMG.wood, IMG.velvet],
+    images: [IMG.mensSet],
     description:
       "A men's body wash with presence. Warm, woody, and easy to live with.",
   },
@@ -618,7 +641,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Woody",
     size: "226 g",
-    images: [IMG.wood, IMG.campaign],
+    images: ["/products/ai/mens-body-cream.jpg"],
     description:
       "Men's body cream for after the shower. Hydration without the fuss.",
   },
@@ -632,7 +655,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Woody",
     size: "104 g",
-    images: [IMG.sprays, IMG.wood],
+    images: ["/products/ai/mens-body-spray.jpg"],
     description:
       "A men's body spray for the finish. Light, lingering, ready for the day.",
   },
@@ -648,7 +671,7 @@ const drafts: Draft[] = [
     size: "236 ml",
     featured: true,
     bestSeller: true,
-    images: [IMG.sprays, IMG.campaign, IMG.campaignAlt],
+    images: [IMG.mist3, IMG.mist4, IMG.mist5, IMG.butterfly],
     description:
       "A signature mist for skin and the air around it. Light, lingering, made for everyday wear.",
   },
@@ -662,7 +685,7 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Floral",
     size: "236 ml",
-    images: [IMG.campaignAlt, IMG.sprays, IMG.campaign],
+    images: [IMG.mistVivaVanilla, IMG.mistIfYouMusk, IMG.mist6, IMG.mistAlwaysFleur],
     description:
       "A perfume mist with a little more presence. For the days you want to be remembered.",
   },
@@ -677,7 +700,7 @@ const drafts: Draft[] = [
     fragranceFamily: "Floral",
     size: "236 ml",
     newArrival: true,
-    images: [IMG.campaign, IMG.velvet, IMG.sprays],
+    images: ["/products/ai/shimmery-mist.jpg"],
     description:
       "A shimmery mist — fragrance with a soft glow. Romanticise the light on your skin.",
   },
@@ -691,9 +714,13 @@ const drafts: Draft[] = [
     price: 20000,
     fragranceFamily: "Fresh",
     size: "156 ml",
-    images: [IMG.sprays, IMG.wood],
+    images: [
+      "/products/aromatherapy-collection.jpg",
+      "/products/aromatherapy-mist-rose-vanilla.jpg",
+      "/products/aromatherapy-mist-midnight-sky.jpg",
+    ],
     description:
-      "An aromatherapy mist for when the room — and you — need a reset.",
+      "An aromatherapy mist for every mood — Lavender & Iris, Rose & Vanilla, Neroli Blossom & Bergamot, Orange & Ginger, Black Chamomile and more. One spritz to unwind, reset or add a little calm to the chaos.",
   },
   {
     id: "p-041",
@@ -706,9 +733,41 @@ const drafts: Draft[] = [
     price: 25000,
     fragranceFamily: "Floral",
     size: "250 ml",
-    images: [IMG.campaignAlt, IMG.sprays, IMG.campaign],
+    images: ["/products/ai/victorias-secret-body-mist.jpg"],
     description:
       "A Victoria's Secret body mist, sourced with the same care as the rest of the edit.",
+  },
+  {
+    id: "p-043",
+    sku: "OMY-ITN-MINI",
+    slug: "into-the-night-fine-fragrance-mist-mini",
+    name: "Into the Night Fine Fragrance Mist",
+    type: "Fine Fragrance Mist",
+    category: "fragrance",
+    price: 8000,
+    fragranceFamily: "Warm",
+    fragranceName: "Into the Night",
+    size: "75 ml / 2.5 fl oz",
+    newArrival: true,
+    images: ["/products/mist-into-the-night-travel.jpg"],
+    description:
+      "Dark, mysterious and effortlessly sexy. Into the Night turns heads without trying too hard — made for date night, girls' night, or just because.",
+  },
+  {
+    id: "p-044",
+    sku: "OMY-LUM-MINI",
+    slug: "luminous-fine-fragrance-mist-mini",
+    name: "Luminous Fine Fragrance Mist",
+    type: "Fine Fragrance Mist",
+    category: "fragrance",
+    price: 8000,
+    fragranceFamily: "Warm",
+    fragranceName: "Luminous",
+    size: "75 ml / 2.5 fl oz",
+    newArrival: true,
+    images: ["/products/mist-luminous-travel.jpg"],
+    description:
+      "Some scents whisper. Luminous makes an entrance — rich, sophisticated and effortlessly luxurious. A little luxury in every spritz.",
   },
   {
     id: "p-042",
@@ -723,7 +782,7 @@ const drafts: Draft[] = [
     size: "Curated set",
     featured: true,
     newArrival: true,
-    images: [IMG.velvet, IMG.campaign, IMG.wood],
+    images: [IMG.giftAtw, IMG.giftCollection],
     description:
       "A curated set of essentials — the easiest way to give a little luxury. Packaged with care, ready to romanticise someone else's everyday.",
   },
