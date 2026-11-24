@@ -31,11 +31,12 @@ export function productWhatsappMessage(product: Product) {
   return `Hello Omyre Essentials, I'm interested in ordering the ${product.name}.`;
 }
 
-export function editorialTitle(name: string) {
-  return name.replace(
-    /\s+(3-Wick Candle|Scented Candle|Fine Fragrance Mist|Shimmer Mist|Aromatherapy Mist|Body Lotion|Body Cream|Body Wash|Body Butter|Body Scrub|Shower Gel|Gift Set|Wallflower Refill|Car Clips|Set)$/i,
-    "",
-  );
+// Show just the scent ("A Thousand Wishes") when the name is scent + type; the card
+// prints the type underneath. Generic names like "Women's Body Cream" stay whole.
+export function editorialTitle(product: Product) {
+  const scent = product.fragranceName;
+  if (scent !== "Assorted" && product.name.startsWith(`${scent} `)) return scent;
+  return product.name;
 }
 
 export function generateOrderId() {

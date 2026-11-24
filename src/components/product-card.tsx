@@ -79,7 +79,7 @@ export function ProductCard({ product }: { product: Product }) {
           className="block w-full"
         >
           <h3 className="min-h-[2.5rem] font-serif text-lg leading-snug transition-colors duration-200 group-hover:text-gold md:min-h-[3rem] md:text-xl">
-            {editorialTitle(product.name)}
+            {editorialTitle(product)}
           </h3>
         </button>
         <p className="mt-1 text-[11px] tracking-[0.16em] text-plum/45 uppercase">

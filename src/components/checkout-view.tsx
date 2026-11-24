@@ -15,6 +15,8 @@ export function CheckoutView() {
   const { cart, cartSubtotal, placeOrder } = useStore();
   const [delivery, setDelivery] = useState<DeliveryOption>("lagos");
   const [payment, setPayment] = useState<PaymentMethod>("bank-transfer");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const lines = cart
     .map((item) => {
@@ -23,7 +25,8 @@ export function CheckoutView() {
     })
     .filter(Boolean);
 
-  if (cart.length === 0) {
+  // While submitting, the cart empties just before we navigate away; don't flash the empty state.
+  if (cart.length === 0 && !submitting) {
     return (
       <div className="mx-auto max-w-lg px-4 py-24 text-center">
         <h1 className="font-serif text-4xl">Your bag is empty</h1>
@@ -38,10 +41,12 @@ export function CheckoutView() {
     );
   }
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const order = placeOrder({
+    setSubmitting(true);
+    setError(null);
+    const result = await placeOrder({
       customer: {
         fullName: String(data.get("fullName")),
         email: String(data.get("email")),
@@ -54,8 +59,16 @@ export function CheckoutView() {
       },
       delivery,
       payment,
-    });
-    router.push(`/order-confirmation?id=${order.id}`);
+    }).catch(() => ({
+      ok: false as const,
+      error: "We couldn't place your order. Please check your connection and try again.",
+    }));
+    if (!result.ok) {
+      setError(result.error);
+      setSubmitting(false);
+      return;
+    }
+    router.push(`/order-confirmation?id=${result.order.id}`);
   }
 
   return (
@@ -151,11 +164,17 @@ export function CheckoutView() {
             </div>
           </fieldset>
 
+          {error && (
+            <p role="alert" className="border border-rose/40 bg-ivory px-4 py-3 text-sm text-rose">
+              {error}
+            </p>
+          )}
           <button
             type="submit"
-            className="w-full bg-plum py-4 text-[11px] tracking-[0.22em] text-cream uppercase transition duration-200 hover:bg-[#3a1f33]"
+            disabled={submitting}
+            className="w-full bg-plum py-4 text-[11px] tracking-[0.22em] text-cream uppercase transition duration-200 hover:bg-[#3a1f33] disabled:opacity-60"
           >
-            Place order · {formatNaira(cartSubtotal)}
+            {submitting ? "Placing order…" : `Place order · ${formatNaira(cartSubtotal)}`}
           </button>
         </form>
       </div>

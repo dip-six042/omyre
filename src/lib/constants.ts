@@ -23,14 +23,14 @@ export const CATEGORIES: {
     name: "Body Care",
     description: "Everyday rituals, elevated.",
     href: "/shop?category=body-care",
-    image: "/brand/candles-wood.jpg",
+    image: "/products/body-cream-a-thousand-wishes.jpg",
   },
   {
     slug: "fragrance",
     name: "Fragrance",
     description: "Find a scent that feels like you.",
     href: "/shop?category=fragrance",
-    image: "/brand/room-sprays.jpg",
+    image: "/products/mist-viva-vanilla.jpg",
   },
   {
     slug: "candles",
@@ -44,14 +44,14 @@ export const CATEGORIES: {
     name: "Home Fragrance",
     description: "Your living room has a love language.",
     href: "/shop?category=home-fragrance",
-    image: "/brand/candles-wood.jpg",
+    image: "/brand/room-sprays.jpg",
   },
   {
     slug: "gift-sets",
     name: "Gift Sets",
     description: "Thoughtful little luxuries.",
     href: "/shop?category=gift-sets",
-    image: "/brand/candles-velvet.jpg",
+    image: "/products/gift-set-a-thousand-wishes.jpg",
   },
 ];
 

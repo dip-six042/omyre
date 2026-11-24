@@ -1,9 +1,9 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
+import { trackOrder, type TrackedOrder } from "@/app/actions/orders";
 import { IconWhatsApp } from "@/components/icons";
-import { useStore } from "@/context/store";
-import type { Order, OrderStatus } from "@/lib/types";
+import type { OrderStatus } from "@/lib/types";
 import { formatNaira, whatsappUrl } from "@/lib/utils";
 
 const STEPS: OrderStatus[] = [
@@ -26,20 +26,23 @@ function stepIndex(status: OrderStatus) {
 }
 
 export default function TrackPage() {
-  const { orders } = useStore();
   const [id, setId] = useState("");
+  const [contact, setContact] = useState("");
   const [lookedUp, setLookedUp] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [order, setOrder] = useState<TrackedOrder | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
 
-  const order = useMemo(
-    () => orders.find((o) => normalizeId(o.id) === lookedUp) ?? null,
-    [orders, lookedUp],
-  );
-
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLookedUp(normalizeId(id));
-    setSubmitted(true);
+    const normalized = normalizeId(id);
+    setLoading(true);
+    setFailed(false);
+    setLookedUp(normalized);
+    const found = await trackOrder(normalized, contact).catch(() => null);
+    setOrder(found);
+    setFailed(!found);
+    setLoading(false);
   }
 
   return (
@@ -48,7 +51,8 @@ export default function TrackPage() {
       <h1 className="mt-2 font-serif text-4xl md:text-5xl">Track your order</h1>
       <p className="mt-4 text-sm leading-relaxed text-plum/65">
         Enter the order ID from your confirmation — it looks like{" "}
-        <span className="tracking-wide">OMY-123456</span>.
+        <span className="tracking-wide">OMY-123456</span> — and the email or phone number you
+        used at checkout.
       </p>
 
       <form className="mt-10" onSubmit={onSubmit}>
@@ -59,26 +63,42 @@ export default function TrackPage() {
             value={id}
             onChange={(e) => {
               setId(e.target.value);
-              setSubmitted(false);
+              setFailed(false);
             }}
             placeholder="OMY-000000"
             autoComplete="off"
             className="mt-2 w-full border border-beige bg-transparent px-4 py-3 text-sm tracking-[0.12em] uppercase outline-none transition focus:border-plum"
           />
         </label>
+        <label className="mt-6 block text-[11px] tracking-[0.18em] text-gold uppercase">
+          Email or phone
+          <input
+            required
+            value={contact}
+            onChange={(e) => {
+              setContact(e.target.value);
+              setFailed(false);
+            }}
+            placeholder="you@example.com or 0812 345 6789"
+            autoComplete="email"
+            className="mt-2 w-full border border-beige bg-transparent px-4 py-3 text-sm outline-none transition focus:border-plum"
+          />
+        </label>
         <button
           type="submit"
-          className="mt-6 w-full bg-plum py-3.5 text-[11px] tracking-[0.22em] text-cream uppercase transition duration-200 hover:bg-[#3a1f33]"
+          disabled={loading}
+          className="mt-6 w-full bg-plum py-3.5 text-[11px] tracking-[0.22em] text-cream uppercase transition duration-200 hover:bg-[#3a1f33] disabled:opacity-60"
         >
-          Track
+          {loading ? "Looking…" : "Track"}
         </button>
       </form>
 
-      {submitted && lookedUp && !order && (
+      {failed && lookedUp && (
         <div className="mt-12 border border-beige bg-ivory px-6 py-8 text-center">
           <p className="font-serif text-2xl">We couldn&apos;t find that ID</p>
           <p className="mt-3 text-sm leading-relaxed text-plum/60">
-            Check the code and try again, or message us on WhatsApp with your name and order ID.
+            Check the order ID and the email or phone you used at checkout, or message us on
+            WhatsApp with your name and order ID.
           </p>
           <a
             href={whatsappUrl(
@@ -97,7 +117,7 @@ export default function TrackPage() {
   );
 }
 
-function OrderStatusCard({ order }: { order: Order }) {
+function OrderStatusCard({ order }: { order: TrackedOrder }) {
   const current = stepIndex(order.status);
   const stopped = order.status === "Cancelled" || order.status === "Returned";
 
